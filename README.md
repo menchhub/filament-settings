@@ -7,7 +7,7 @@ A Filament v3 package that integrates **Spatie Laravel Settings** with Filament 
 
 ## 📸 Preview
 
-![Filament Settings Plugin](assets/mench.png)
+![Filament Settings Plugin](resources/assets/mench.png)
 
 ---
 ## **📥 Installation**
