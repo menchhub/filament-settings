@@ -12,10 +12,15 @@ use Menchhub\FilamentSettings\Theme\ThemeManager;
 use Menchhub\FilamentSettings\Branding\FilamentBrandingManager;
 
 
-class SettingsServiceProvider extends ServiceProvider
+class FilamentSettingsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+
+        $this->publishes([
+            __DIR__ . '/../config/filament-settings.php' => config_path('filament-settings.php'),
+        ], 'filament-settings-config');
+
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'filament-settings');
 
@@ -37,10 +42,7 @@ class SettingsServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/filament-settings.php',
-            'filament-settings'
-        );
+
     }
 
     // Move publishes here

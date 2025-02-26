@@ -33,9 +33,10 @@ class SiteSettingsPage extends SettingsPage
         return Filament::getCurrentPanel()?->getPlugins()['filament-settings'] ?? null;
     }
 
+    protected static ?string $navigationGroup = 'settings';
     public static function getNavigationGroup(): ?string
     {
-        return static::getPlugin()?->getNavigationGroup() ?? 'Settings';
+        return __(static::$navigationGroup); // Make it translatable
     }
 
     public static function getNavigationLabel(): string

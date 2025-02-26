@@ -1,6 +1,7 @@
 {
     "name": "menchhub/filament-settings",
-    "description": "A reusable settings package for Filament, powered by Spatie Laravel Settings.",
+    "description": "Menchhub's Filament Settings package with Spatie Settings integration",
+    "keywords": ["filament", "settings", "spatie", "admin-panel", "menchhub"],
     "type": "library",
     "license": "MIT",
     "require": {
@@ -17,16 +18,26 @@
             "Menchhub\\FilamentSettings\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Menchhub\\FilamentSettings\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "authors": [
         {
-            "name": "lexistudio",
-            "email": "menchhub@gmail.com"
+            "name": "Mench Hub",
+            "email": "menchhub@gmail.com",
+            "homepage": "https://menchhub.com",
+            "role": "Developer"
         }
     ],
     "extra": {
         "laravel": {
             "providers": [
-                "Menchhub\\FilamentSettings\\SettingsServiceProvider"
+                "Menchhub\\FilamentSettings\\FilamentSettingsServiceProvider"
             ]
         }
     },

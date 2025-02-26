@@ -6,14 +6,8 @@ use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
-use Filament\View\PanelsRenderHook;
-use Menchhub\FilamentSettings\Analytics\GoogleAnalyticsManager;
-use Menchhub\FilamentSettings\Auth\MenchLogin;
-use Menchhub\FilamentSettings\Branding\FilamentBrandingManager;
-use Menchhub\FilamentSettings\Broadcasting\PusherConfigManager;
+use Illuminate\Support\Facades\Config;
 use Menchhub\FilamentSettings\Filament\Pages\SiteSettingsPage;
-use Menchhub\FilamentSettings\Mail\EmailConfigManager;
-use Menchhub\FilamentSettings\Seo\SeoConfigManager;
 use Menchhub\FilamentSettings\Settings\SiteSettings;
 use Menchhub\FilamentSettings\Theme\ThemeManager;
 
@@ -42,10 +36,7 @@ class MenchFilamentSettingsPlugin implements Plugin
     {
         $settings = app(SiteSettings::class);
 
-        $panel->pages([
-            SiteSettingsPage::class,
-        ]);
-
+        $panel->pages(Config::get('filament-settings.pages', []));
 
         ThemeManager::apply($panel);
     }
