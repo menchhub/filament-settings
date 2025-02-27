@@ -7,6 +7,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Support\Facades\Config;
+use Menchhub\FilamentSettings\Auth\MenchLogin;
 use Menchhub\FilamentSettings\Filament\Pages\SiteSettingsPage;
 use Menchhub\FilamentSettings\Settings\SiteSettings;
 use Menchhub\FilamentSettings\Theme\ThemeManager;
@@ -37,6 +38,10 @@ class MenchFilamentSettingsPlugin implements Plugin
         $settings = app(SiteSettings::class);
 
         $panel->pages(Config::get('filament-settings.pages', []));
+
+        if ($settings->enable_lp) {
+            $panel->login(MenchLogin::class);
+        }
 
         ThemeManager::apply($panel);
     }

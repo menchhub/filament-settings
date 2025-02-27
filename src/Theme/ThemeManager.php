@@ -39,9 +39,9 @@ class ThemeManager
             return view('filament-settings::filament.footer', compact('settings'));
         });
 
-        if ($settings->enable_lp) {
-            $panel->login(MenchLogin::class);
-        }
+//        if ($settings->enable_lp) {
+//            $panel->login(MenchLogin::class);
+//        }
 
         $panel->renderHook(PanelsRenderHook::HEAD_START, function () {
             return view('filament-settings::partials.seo');
