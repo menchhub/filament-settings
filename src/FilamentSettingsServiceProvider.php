@@ -49,9 +49,16 @@ class FilamentSettingsServiceProvider extends ServiceProvider
     protected function registerPublishes(): void
     {
         // Migrations
-        $this->publishes([
-            __DIR__ . '/../database/migrations/create_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_settings_table.php'),
-        ], 'filament-settings-migrations');
+        // Check if the migration already exists to prevent duplicates
+        $migrationFileName = collect(glob(database_path('migrations/*.php')))
+            ->map(fn ($path) => basename($path))
+            ->first(fn ($filename) => str_ends_with($filename, '_create_settings_table.php'));
+
+        if (!$migrationFileName) { // ✅ Only publish if migration does not exist
+            $this->publishes([
+                __DIR__ . '/../database/migrations/create_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_settings_table.php'),
+            ], 'filament-settings-migrations');
+        }
 
         // Config file
         $this->publishes([
