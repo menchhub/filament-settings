@@ -15,13 +15,15 @@ class FilamentSettingsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        // Publish config file
         $this->publishes([
             __DIR__ . '/../config/filament-settings.php' => config_path('filament-settings.php'),
         ], 'filament-settings-config');
 
+        // Load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'filament-settings');
 
-        // ✅ Automatically load migrations (no need to publish manually)
+        // ✅ Automatically load migrations
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         Filament::serving(function () {
@@ -32,8 +34,16 @@ class FilamentSettingsServiceProvider extends ServiceProvider
             FilamentBrandingManager::apply();
         });
 
-        // Organize publishes in a separate method
-        $this->registerPublishes();
+        if ($this->app->runningInConsole()) {
+            $this->registerPublishes();
+
+            // ✅ Automatically publish migrations if not already present
+            if (!class_exists('CreateSettingsTable')) {
+                $this->publishes([
+                    __DIR__ . '/../database/migrations/create_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_settings_table.php'),
+                ], 'filament-settings-migrations');
+            }
+        }
 
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
