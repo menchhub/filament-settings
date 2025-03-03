@@ -11,19 +11,18 @@ use Menchhub\FilamentSettings\Seo\SeoConfigManager;
 use Menchhub\FilamentSettings\Theme\ThemeManager;
 use Menchhub\FilamentSettings\Branding\FilamentBrandingManager;
 
-
 class FilamentSettingsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-
         $this->publishes([
             __DIR__ . '/../config/filament-settings.php' => config_path('filament-settings.php'),
         ], 'filament-settings-config');
 
-
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'filament-settings');
 
+        // ✅ Automatically load migrations (no need to publish manually)
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         Filament::serving(function () {
             EmailConfigManager::apply();
@@ -42,23 +41,15 @@ class FilamentSettingsServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-
+        //
     }
 
-    // Move publishes here
     protected function registerPublishes(): void
     {
-        // Migrations
-        // Check if the migration already exists to prevent duplicates
-        $migrationFileName = collect(glob(database_path('migrations/*.php')))
-            ->map(fn ($path) => basename($path))
-            ->first(fn ($filename) => str_ends_with($filename, '_create_settings_table.php'));
-
-        if (!$migrationFileName) { // ✅ Only publish if migration does not exist
-            $this->publishes([
-                __DIR__ . '/../database/migrations/create_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_settings_table.php'),
-            ], 'filament-settings-migrations');
-        }
+        // ✅ Allow users to publish migration if they want to modify it
+        $this->publishes([
+            __DIR__ . '/../database/migrations/create_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_settings_table.php'),
+        ], 'filament-settings-migrations');
 
         // Config file
         $this->publishes([
@@ -84,13 +75,5 @@ class FilamentSettingsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/assets/default.png' => public_path('views/vendor/filament-settings/default.png'),
         ], 'filament-settings-assets');
-
-//        $this->publishes([
-//            __DIR__.'/../resources/views/themes/designs/default.png' => public_path('vendor/menchhub/filament-settings/default.png'),
-//        ], 'filament-settings-assets');
-
     }
-
-
-
 }

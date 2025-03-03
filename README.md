@@ -26,6 +26,13 @@ Run the migration to create the settings table:
 php artisan migrate
 ```
 
+Optionally: If a user wants to edit the migration, publish it manually:
+```sh
+php artisan vendor:publish --tag=filament-settings-migrations
+```
+This copies the migration into their database/migrations/ folder.
+
+
 Optionally Publish the asset folder:
 ```sh
 php artisan vendor:publish --tag=filament-settings-assets
