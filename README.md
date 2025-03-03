@@ -26,6 +26,12 @@ Run the migration to create the settings table:
 php artisan migrate
 ```
 
+Optionally Publish the asset folder:
+```sh
+php artisan vendor:publish --tag=filament-settings-assets
+
+```
+
 ---
 
 ## **⚙️ Configuration**

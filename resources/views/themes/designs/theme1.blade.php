@@ -4,14 +4,14 @@
 ])
 
 @php
-    // ✅ Avoid multiple calls to `app()`, improving performance
     $settings = app(\Menchhub\FilamentSettings\Settings\SiteSettings::class);
 
-  // ✅ Check if the user has uploaded a background image
+    // ✅ Ensure correct storage path or use vendor asset
     $backgroundImage = $settings->lp_bg_photo
-        ? asset($settings->lp_bg_photo)
-        : asset('vendor/menchhub/filament-settings/default.png'); // ✅ Use package default if none is set
+        ? asset('storage/' . ltrim($settings->lp_bg_photo, '/'))
+        : asset('vendor/menchhub/filament-settings/default.png'); // Corrected path for vendor image
 @endphp
+
 
 <div class="flex h-screen">
     <!-- ✅ Left Pane (Illustration) -->
