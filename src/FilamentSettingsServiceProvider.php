@@ -81,13 +81,13 @@ class FilamentSettingsServiceProvider extends ServiceProvider
         ], 'filament-settings-views');
 
         // ✅ Publish the default image
-//        $this->publishes([
-//            __DIR__ . '/../resources/assets/default.png' => public_path('views/vendor/filament-settings/default.png'),
-//        ], 'filament-settings-assets');
-
         $this->publishes([
-            __DIR__.'/../resources/views/themes/designs/default.png' => public_path('vendor/menchhub/filament-settings/default.png'),
+            __DIR__ . '/../resources/assets/default.png' => public_path('views/vendor/filament-settings/default.png'),
         ], 'filament-settings-assets');
+
+//        $this->publishes([
+//            __DIR__.'/../resources/views/themes/designs/default.png' => public_path('vendor/menchhub/filament-settings/default.png'),
+//        ], 'filament-settings-assets');
 
     }
 
