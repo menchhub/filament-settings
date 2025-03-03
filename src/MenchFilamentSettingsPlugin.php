@@ -8,7 +8,6 @@ use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Support\Facades\Config;
 use Menchhub\FilamentSettings\Auth\MenchLogin;
-use Menchhub\FilamentSettings\Filament\Pages\SiteSettingsPage;
 use Menchhub\FilamentSettings\Settings\SiteSettings;
 use Menchhub\FilamentSettings\Theme\ThemeManager;
 

@@ -540,5 +540,11 @@ class SiteSettingsPage extends SettingsPage
         }
     }
 
+    protected function afterSave(): void
+    {
+        // ✅ Refresh the entire page
+        redirect(request()->header('Referer'));
+    }
+
 
 }
