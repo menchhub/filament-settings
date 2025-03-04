@@ -23,12 +23,17 @@ class ThemeManager
             ? '#' . ltrim($settings->site_theme_dark, '#')
             : '#1f2937'; // Default Dark Gray
 
+
         // ✅ Apply theme colors directly to Filament
         $panel->colors([
             'primary' => Color::hex($lightThemeColor),
             'gray'    => Color::hex($darkThemeColor),
         ]);
 
+        // ✅ Inject Sidebar Styles in HEAD_END
+        $panel->renderHook(PanelsRenderHook::HEAD_END, function () use ($settings) {
+            return view('filament-settings::themes.custom-styles', compact('settings'))->render();
+        });
 
         $panel->renderHook(PanelsRenderHook::CONTENT_END, function () use ($settings) {
             return '<div class="h-16"></div>';

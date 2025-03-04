@@ -11,6 +11,7 @@ class SiteSettings extends Settings
     public ?string $site_description = null;
     public ?string $site_email = null;
     public ?string $site_logo = null;
+    public ?string $site_logo_dark = null;
     public ?string $site_favicon = null;
     public ?string $site_url = null;
     public ?string $site_theme_light = null;
@@ -61,12 +62,27 @@ class SiteSettings extends Settings
 
 //    Login Page
 
-
     public ?string $lp_bg_photo = null;
     public ?string $lp_title = null;
     public ?string $lp_description = null;
     public ?string $lp_login_bg_color = null;
     public bool $enable_lp = false;
+
+
+    //   Theme Color Page
+
+    public ?string $logo_color_bg_dark = null;
+    public ?string $sidebar_color_bg_light = null;
+    public ?string $sidebar_label_color_light = null;
+    public ?string $sidebar_color_bg_dark = null;
+    public ?string $sidebar_label_color_dark = null;
+
+    public ?string $footer_color_bg_light = null;
+    public ?string $footer_label_color_light = null;
+    public ?string $footer_color_bg_dark = null;
+    public ?string $footer_label_color_dark = null;
+
+    public bool $enable_tc = false;
 
 
     public static function group(): string

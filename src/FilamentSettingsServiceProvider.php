@@ -56,6 +56,12 @@ class FilamentSettingsServiceProvider extends ServiceProvider
 
     protected function registerPublishes(): void
     {
+
+        $this->publishes([
+            __DIR__ . '/../resources/css/theme.css' => public_path('vendor/filament-settings/theme.css'),
+        ], 'filament-settings-theme');
+
+
         // ✅ Allow users to publish migration if they want to modify it
         $this->publishes([
             __DIR__ . '/../database/migrations/create_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_settings_table.php'),

@@ -5,6 +5,7 @@ namespace Menchhub\FilamentSettings\Filament\Pages;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
@@ -101,10 +102,6 @@ class SiteSettingsPage extends SettingsPage
                                         TextInput::make('site_url')
                                             ->label('Site URL')
                                             ->url(),
-                                        ColorPicker::make('site_theme_light')
-                                            ->label('Light Theme Color'),
-                                        ColorPicker::make('site_theme_dark')
-                                            ->label('Dark Theme Color'),
 
                                         TextInput::make('site_footer')
                                             ->label('Footer Message')
@@ -125,6 +122,15 @@ class SiteSettingsPage extends SettingsPage
                                             ->visibility('public')
                                             ->disk('public')
                                             ->getUploadedFileNameForStorageUsing(fn($file) => $file->getClientOriginalName()), // Generate the correct file name
+                                        FileUpload::make('site_logo_dark')
+                                            ->label('Upload Site Logo Dark')
+                                            ->image()
+                                            ->nullable()
+                                            ->directory('assets') // File will be stored in 'storage/app/public/assets'
+                                            ->visibility('public')
+                                            ->disk('public')
+                                            ->getUploadedFileNameForStorageUsing(fn($file) => $file->getClientOriginalName()), // Generate the correct file name
+
                                         FileUpload::make('site_favicon')
                                             ->label('Upload Favicon')
                                             ->image()
@@ -475,8 +481,89 @@ class SiteSettingsPage extends SettingsPage
                                         ->label('Login BG Color')
                                         ->visible(fn(callable $get) => $get('enable_lp') === true),
                                 ])->columns(2),
-
                         ]),
+
+
+
+                    //                     Tab 7: Theme Color Settings
+                    Tabs\Tab::make('Theme Color')
+                        ->icon('heroicon-o-computer-desktop')
+                        ->schema([
+
+                            Toggle::make('enable_tc')
+                                ->label('Enable Theme Color')
+                                ->reactive()
+                                ->default(false),
+                            Section::make('Theme Color Setup Info.')
+                                ->visible(fn(callable $get) => $get('enable_tc') === true)
+                                ->schema([
+
+                                    Fieldset::make('General Colors')
+                                        ->label('General Colors')
+                                        ->visible(fn(callable $get) => $get('enable_tc') === true)
+                                        ->schema([
+
+                                            ColorPicker::make('site_theme_light')
+                                                ->label('Light Theme Color')
+                                                ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                            ColorPicker::make('site_theme_dark')
+                                                ->label('Dark Theme Color')
+                                                ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                            ColorPicker::make('logo_color_bg_dark')
+                                                ->label('Logo BG Color Dark')
+                                                ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                        ])->columns(3),
+
+
+                                    Fieldset::make('Sidebar Colors')
+                                        ->label('Sidebar Colors')
+                                        ->visible(fn(callable $get) => $get('enable_tc') === true)
+                                        ->schema([
+                                        ColorPicker::make('sidebar_color_bg_light')
+                                            ->label('BG Color Light')
+                                            ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                        ColorPicker::make('sidebar_color_bg_dark')
+                                            ->label('BG Color Dark')
+                                            ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                        ColorPicker::make('sidebar_label_color_dark')
+                                            ->label('Label Color Dark')
+                                            ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                    ])->columns(3),
+
+
+                                    Fieldset::make('Footer Colors')
+                                        ->label('Footer Colors')
+                                        ->visible(fn(callable $get) => $get('enable_tc') === true)
+                                        ->schema([
+                                        ColorPicker::make('footer_color_bg_light')
+                                            ->label('BG Color Light')
+                                            ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                        ColorPicker::make('footer_color_bg_dark')
+                                            ->label('BG Color Dark')
+                                            ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                        ColorPicker::make('footer_label_color_dark')
+                                            ->label('Label Color Dark')
+                                            ->visible(fn(callable $get) => $get('enable_tc') === true),
+
+                                        ])->columns(3)
+
+
+
+                                ])->columns(3),
+                        ]),
+
+
+
+
+
                 ])->columnSpan('full'),
         ]);
     }

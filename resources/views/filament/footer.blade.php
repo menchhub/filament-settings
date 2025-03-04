@@ -1,5 +1,5 @@
-<footer class="fixed inset-x-0 bottom-0 w-full bg-white dark:bg-gray-900 py-2 text-sm text-gray-600 shadow z-50">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center px-6">
+<footer class="footer fixed inset-x-0 bottom-0 w-full bg-white dark:bg-gray-900 py-2 text-sm text-gray-600 shadow z-50">
+    <div class="container footer-text mx-auto flex flex-col md:flex-row items-center justify-center px-6">
         <!-- Footer Text (Centered on Mobile, Left on Large Screens) -->
         <p class="text-center mt-2 md:mt-0 md:text-left">
             &copy; {{ date('Y') }} {{ $settings->site_name ?? "My Application" }} - {{ $settings->site_footer }}

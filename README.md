@@ -39,6 +39,14 @@ php artisan vendor:publish --tag=filament-settings-assets
 
 ```
 
+Optionally Publish the theme:
+```sh
+php artisan vendor:publish --tag=filament-settings-theme
+
+```
+
+
+
 ---
 
 ## **⚙️ Configuration**

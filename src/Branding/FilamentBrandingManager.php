@@ -27,5 +27,10 @@ class FilamentBrandingManager
             $panel->brandLogoHeight('2rem');
         }
 
+        if ($settings->site_logo_dark) {
+            $panel->darkModeBrandLogo(asset('storage/' . $settings->site_logo_dark));
+            $panel->brandLogoHeight('2rem');
+        }
+
     }
 }
