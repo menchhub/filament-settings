@@ -28,7 +28,7 @@ class MenchLogin extends BaseLogin
                 'backgroundImage' => asset($bgPhoto), // ✅ Background image
                 'title' => $settings->lp_title ?? "Quote Of The Day",
                 'description' => $settings->lp_description ?? "Ghana is a good place to spend time in Africa. YOO",
-                'loginBgColor' => $settings->lp_login_bg_color ?? '#f7fafc',
+                'loginBgColor' => $settings->lp_login_bg_color ?? '#f7faff',
             ],
         ];
     }

@@ -81,8 +81,10 @@ class SiteSettings extends Settings
     public ?string $footer_label_color_light = null;
     public ?string $footer_color_bg_dark = null;
     public ?string $footer_label_color_dark = null;
-
     public bool $enable_tc = false;
+    public bool $enable_bc = false;
+
+
 
 
     public static function group(): string

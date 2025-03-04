@@ -53,7 +53,7 @@ php artisan vendor:publish --tag=filament-settings-theme
 After publishing the config file, you can find it in:  
 📌 **`config/filament-settings.php`**
 
-### **Example Config**
+### **Config**
 ```php
 return [
     /*

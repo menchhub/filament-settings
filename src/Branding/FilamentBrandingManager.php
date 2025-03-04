@@ -17,8 +17,6 @@ class FilamentBrandingManager
         $panel->brandName($settings->site_name);
         $panel->favicon(asset('storage/' . $settings->site_favicon));
 
-//        $panel->sidebarCollapsibleOnDesktop();
-
 
         $panel->sidebarFullyCollapsibleOnDesktop();
 

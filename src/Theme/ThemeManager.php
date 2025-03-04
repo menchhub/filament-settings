@@ -30,7 +30,7 @@ class ThemeManager
             'gray'    => Color::hex($darkThemeColor),
         ]);
 
-        // ✅ Inject Sidebar Styles in HEAD_END
+        // ✅ Inject Custom Styles in HEAD_END
         $panel->renderHook(PanelsRenderHook::HEAD_END, function () use ($settings) {
             return view('filament-settings::themes.custom-styles', compact('settings'))->render();
         });
@@ -44,9 +44,6 @@ class ThemeManager
             return view('filament-settings::filament.footer', compact('settings'));
         });
 
-//        if ($settings->enable_lp) {
-//            $panel->login(MenchLogin::class);
-//        }
 
         $panel->renderHook(PanelsRenderHook::HEAD_START, function () {
             return view('filament-settings::partials.seo');

@@ -12,7 +12,7 @@
     .footer-text {
         color: {{ $settings->site_theme_light }} !important;
     }
-    /* Dark theme CSS */
+    /* Dark Main theme CSS */
     .dark .fi-sidebar-header {
         background-color: {{ $settings->logo_color_bg_dark }};
     }

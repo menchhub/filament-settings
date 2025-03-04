@@ -126,7 +126,7 @@ class SiteSettingsPage extends SettingsPage
                                             ->label('Upload Site Logo Dark')
                                             ->image()
                                             ->nullable()
-                                            ->directory('assets') // File will be stored in 'storage/app/public/assets'
+                                            ->directory('assets') // File will be stored in 'storage/app/public/assets/'
                                             ->visibility('public')
                                             ->disk('public')
                                             ->getUploadedFileNameForStorageUsing(fn($file) => $file->getClientOriginalName()), // Generate the correct file name
