@@ -1,4 +1,4 @@
-<footer class="footer fixed inset-x-0 bottom-0 w-full bg-white dark:bg-gray-900 py-2 text-sm text-gray-600 shadow z-50">
+<footer class="footer fixed inset-x-0 bottom-0 w-full bg-white dark:bg-gray-900 py-2 text-sm text-gray-600 shadow z-10">
     <div class="container footer-text mx-auto flex flex-col md:flex-row items-center justify-center px-6">
         <!-- Footer Text (Centered on Mobile, Left on Large Screens) -->
         <p class="text-center mt-2 md:mt-0 md:text-left">
@@ -8,7 +8,7 @@
         <!-- Social Media Icons: Moves Below on Mobile -->
         <div class="flex space-x-6 mt-2 md:mt-0 mx-3 md:mx-0">
             <!-- Facebook -->
-            <a href="{{ $settings->facebook_url ?? '#' }}" target="_blank"
+            <a href="{{ $settings->facebook_url ?? 'https://menchhub.com' }}" target="_blank"
                class="px-1 py-1 mx-1 border border-gray-300 rounded-md bg-gray-100 hover:bg-blue-600 hover:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-blue-500 transition">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22 12.06C22 6.48 17.52 2 12 2S2 6.48 2 12.06c0 5 3.66 9.12 8.45 9.94V14.4h-2.54v-2.34h2.54v-1.84c0-2.5 1.5-3.89 3.77-3.89 1.1 0 2.25.2 2.25.2v2.46h-1.27c-1.25 0-1.64.78-1.64 1.58v1.49h2.78l-.44 2.34h-2.34v7.6c4.79-.82 8.45-4.94 8.45-9.94z"/>
