@@ -1,0 +1,50 @@
+# 🚀 Filament Package .gitignore
+
+# 🏗 Ignore system files
+README-DEV.md
+README-HIDE.md
+.DS_Store
+Thumbs.db
+
+# 📂 Ignore environment & secrets
+.env
+.env.local
+.env.testing
+.env.production
+.env.*.local
+
+# 🔧 Ignore Composer dependencies (keep vendor if package users need it)
+vendor/
+composer.lock
+
+# ⚙️ Ignore Laravel & Filament caches
+bootstrap/cache/
+storage/
+storage/*.key
+
+# ⚙️ Ignore PHPUnit & test coverage reports
+phpunit.xml
+phpunit.xml.dist
+tests/_output/
+tests/_support/_generated/
+coverage.xml
+clover.xml
+
+# 🖊 Ignore PhpStorm & VSCode settings
+.idea/
+.vscode/
+
+# 📄 Ignore log files
+*.log
+*.cache
+
+# 📷 Ignore built assets (if using Laravel Mix, Vite, or Webpack)
+public/hot
+public/storage
+public/mix-manifest.json
+public/build
+
+# 🚀 Ignore Node.js dependencies (if using frontend tools)
+node_modules/
+npm-debug.log*
+yarn-error.log
